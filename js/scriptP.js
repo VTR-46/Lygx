@@ -1,11 +1,11 @@
-let user = JSON.parse(localStorage.getItem('UserDATA')) || {
+let user = JSON.parse(localStorage.getItem('UserDATA')) || {        //Funcionamento do programa por meio do localStorage
     firstName: "User",
     lastName: "NameX",
     balance: 1000,
-    implements: []
+    implements: []                      //Array de implementos
 };
 
-function implemntess(name, v) {
+function implemntess(name, v) {            //Implementos
     this.nameData = name;
     this.value = v;
     this.total = 0;
@@ -44,6 +44,52 @@ const bootForm = document.querySelector('#bootForm');
 bootForm.addEventListener('submit', function (event) {
 
     addI();
+});
+
+function averageCalc() {      //Media
+    const userLocal = JSON.parse(localStorage.getItem('UserDATA'));
+    let k = 0;
+    let i;
+    for (i = 0; i < userLocal.implements.length; i++) {
+        k += userLocal.implements[i].value;
+
+
+    }
+    //console.log(k + " " + i );
+    return k / i;
+}
+
+const resetbt = document.querySelector('#resetbt');
+resetbt.addEventListener('click', function (params) {
+    const userLocal = JSON.parse(localStorage.getItem('UserDATA'));
+    console.log('testeFOI');
+    console.log(userLocal);
+
+    userLocal.implements = [];
+
+    localStorage.setItem('UserDATA', JSON.stringify(userLocal));
+    window.location.reload();
+
+
+});
+
+const altsaldobt = document.querySelector('#altsaldobt');
+altsaldobt.addEventListener('click', function (params) {
+    const userLocal = JSON.parse(localStorage.getItem('UserDATA'));
+    console.log('testeFOI');
+    console.log(userLocal);
+
+    const newbalance = document.querySelector('#newvalue');
+    let n = newbalance.value;
+
+    console.log(n);
+
+    userLocal.balance = n;
+
+    localStorage.setItem('UserDATA', JSON.stringify(userLocal));
+    window.location.reload();
+
+
 });
 
 window.onload = balanceF(), welcome();

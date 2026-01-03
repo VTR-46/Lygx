@@ -42,7 +42,7 @@ window.onload = function () {
 
 }
 
-function remainingBalanceCalculation() {
+function remainingBalanceCalculation() {                                    //Calculo do restante do saldo
     const userLocal = JSON.parse(localStorage.getItem('UserDATA'));
     let k = userLocal.balance;
 
